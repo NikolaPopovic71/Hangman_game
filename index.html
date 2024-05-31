@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="welcome-screen" class="screen">
+        <h1>Welcome to our Hangman game</h1>
+        <ol>
+          <li>
+            Each player who guesses the word starts with 230 points and 120
+            seconds. For a wrong letter, they lose 10 points, and every 10
+            seconds another 15 points.
+          </li>
+          <li>
+            First choose whether you want to play against another player or the
+            computer (which randomly gives you a word from its database of
+            English words).
+          </li>
+          <li>
+            When you have chosen the desired option, press the "Start Game"
+            button.
+          </li>
+          <li>
+            If you have chosen the option to play against another player, when a
+            new window opens, one of you enters the word that is guessed so that
+            the other does not see it.
+          </li>
+          <li>
+            Then by pressing the "Player 2 start the game" button, the game
+            starts where the player who guesses the word enters one of the
+            letters via the keyboard.
+          </li>
+          <li>
+            If they guessed the letter, it will appear in the place (or places)
+            where it is in the given word.
+          </li>
+          <li>
+            In case they missed, that letter will be printed as wrong, and at
+            the same time, a body part will appear on the gallows.
+          </li>
+          <li>The player can make 6 mistakes and then the game ends.</li>
+          <li>
+            At the end, you get a corresponding message and the possibility to
+            restart the game.
+          </li>
+        </ol>
+        <h3>Please, choose one option</h3>
+        <label
+          ><input type="radio" name="mode" value="player-vs-player" /> Player 1
+          vs Player 2</label
+        >
+        <label
+          ><input type="radio" name="mode" value="player-vs-computer" /> Player
+          vs Computer</label
+        >
+        <button id="start-button">Start Game</button>
+      </div>
+
+      <div id="game-screen" class="screen">
+        <button id="home-button" class="home-button">Home</button>
+        <h1>Hangman Game</h1>
+        <div id="timer">Time left: 120s</div>
+        <div id="points">Points: 230</div>
+        <div id="word-input-container">
+          <label for="word-input">Player 1 enter the word</label>
+          <input type="password" id="word-input" class="word-input" />
+          <button id="submit-word-button" class="word-input">
+            Player 2 start the game
+          </button>
+        </div>
+        <div id="game-container">
+          <div id="word"></div>
+          <div id="wrong-letters-container">
+            <span id="wrong-letters"></span>
+          </div>
+          <div id="notification-container" class="notification-container">
+            <p>You have already entered this letter</p>
+          </div>
+          <div class="figure-container">
+            <svg height="250" width="200" class="figure">
+              <!-- Rod -->
+              <line x1="60" y1="20" x2="140" y2="20"></line>
+              <line x1="140" y1="20" x2="140" y2="50"></line>
+              <line x1="60" y1="20" x2="60" y2="230"></line>
+              <line x1="20" y1="230" x2="100" y2="230"></line>
+
+              <!-- Head -->
+              <circle cx="140" cy="70" r="20" class="figure-part"></circle>
+              <!-- Body -->
+              <line
+                x1="140"
+                y1="90"
+                x2="140"
+                y2="150"
+                class="figure-part"
+              ></line>
+              <!-- Arms -->
+              <line
+                x1="140"
+                y1="120"
+                x2="120"
+                y2="100"
+                class="figure-part"
+              ></line>
+              <line
+                x1="140"
+                y1="120"
+                x2="160"
+                y2="100"
+                class="figure-part"
+              ></line>
+              <!-- Legs -->
+              <line
+                x1="140"
+                y1="150"
+                x2="120"
+                y2="180"
+                class="figure-part"
+              ></line>
+              <line
+                x1="140"
+                y1="150"
+                x2="160"
+                y2="180"
+                class="figure-part"
+              ></line>
+            </svg>
+          </div>
+          <div id="keyboard-container"></div>
+          <div id="popup-container" class="popup-container">
+            <div class="popup">
+              <h2 id="final-message"></h2>
+              <button id="play-button">Play Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
