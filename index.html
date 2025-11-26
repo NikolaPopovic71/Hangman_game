@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poetsen+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poetsen+One&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -18,52 +18,52 @@
         <h1>Welcome to our Hangman game</h1>
         <ol>
           <li>
-            Each player who guesses the word starts with 230 points and 120
-            seconds. For a wrong letter, they lose 10 points, and every 10
-            seconds another 15 points.
+            each player who guesses the word starts with 230 points and 120
+            seconds. For a wrong letter he loses 10 points, and every 10 seconds
+            another 15 points.
           </li>
           <li>
-            First choose whether you want to play against another player or the
+            first choose whether you want to play against another player or the
             computer (which randomly gives you a word from its database of
-            English words).
+            English words)
           </li>
           <li>
-            When you have chosen the desired option, press the "Start Game"
-            button.
+            when you have chosen the desired option, press the "Start Game"
+            button
           </li>
           <li>
-            If you have chosen the option to play against another player, when a
+            if you have chosen the option to play against another player, when a
             new window opens, one of you enters the word that is guessed so that
-            the other does not see it.
+            the other does not see it
           </li>
           <li>
-            Then by pressing the "Player 2 start the game" button, the game
+            then by pressing the "Player 2 start the game" button, the game
             starts where the player who guesses the word enters one of the
-            letters via the keyboard.
+            letters via the keyboard
           </li>
           <li>
-            If they guessed the letter, it will appear in the place (or places)
-            where it is in the given word.
+            if he guessed the letter, it will appear in the place (or places)
+            where it is in the given word
           </li>
           <li>
-            In case they missed, that letter will be printed as wrong, and at
-            the same time, a body part will appear on the gallows.
+            in case he missed, that letter will be printed as wrong, and at the
+            same time a body part will appear on the gallows
           </li>
-          <li>The player can make 6 mistakes and then the game ends.</li>
+          <li>the player can make 6 mistakes and then the game ends</li>
           <li>
-            At the end, you get a corresponding message and the possibility to
-            restart the game.
+            at the end, you get a corresponding message and the possibility to
+            restart the game
           </li>
         </ol>
         <h3>Please, choose one option</h3>
-        <label
-          ><input type="radio" name="mode" value="player-vs-player" /> Player 1
-          vs Player 2</label
-        >
-        <label
-          ><input type="radio" name="mode" value="player-vs-computer" /> Player
-          vs Computer</label
-        >
+        <label>
+          <input type="radio" name="mode" value="player-vs-player" /> Player 1
+          vs Player 2
+        </label>
+        <label>
+          <input type="radio" name="mode" value="player-vs-computer" /> Player
+          vs Computer
+        </label>
         <button id="start-button">Start Game</button>
       </div>
 
@@ -137,7 +137,10 @@
               ></line>
             </svg>
           </div>
-          <div id="keyboard-container"></div>
+
+          <!-- On-screen keyboard -->
+          <div id="keyboard-container" class="keyboard-container"></div>
+
           <div id="popup-container" class="popup-container">
             <div class="popup">
               <h2 id="final-message"></h2>
