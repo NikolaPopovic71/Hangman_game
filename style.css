@@ -7,8 +7,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin-bottom: 10px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
   font-family: "Lato", sans-serif;
   background-color: #242f49;
   color: #ffa586;
@@ -50,28 +51,6 @@ ol li {
 }
 
 input[type="radio"] {
-  /* Default styling for unsupported browsers */
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #186049;
-  border-radius: 50%;
-  position: relative;
-}
-
-input[type="radio"]:checked::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background-color: #186049;
-  border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-}
-
-/* accent-color for supported browsers */
-input[type="radio"] {
   accent-color: #186049;
 }
 
@@ -90,9 +69,14 @@ input[type="radio"] {
   background-color: #186049;
   border: 1px solid #186049;
   border-radius: 5px;
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 2px, rgba(0, 0, 0, 0.1) 0 4px 4px,
     rgba(0, 0, 0, 0.1) 0 8px 8px, rgba(0, 0, 0, 0.1) 0 16px 16px,
     rgba(0, 0, 0, 0.1) 0 32px 32px, rgba(0, 0, 0, 0.1) 0 64px 64px;
+}
+
+#start-button:hover {
+  background-color: #1a7a5a;
 }
 
 #word-input-container {
@@ -118,9 +102,14 @@ input[type="radio"] {
   background-color: #186049;
   border: 1px solid #186049;
   border-radius: 5px;
+  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 2px, rgba(0, 0, 0, 0.1) 0 4px 4px,
     rgba(0, 0, 0, 0.1) 0 8px 8px, rgba(0, 0, 0, 0.1) 0 16px 16px,
     rgba(0, 0, 0, 0.1) 0 32px 32px, rgba(0, 0, 0, 0.1) 0 64px 64px;
+}
+
+#word-input-container button:hover {
+  background-color: #1a7a5a;
 }
 
 .word-input {
@@ -193,6 +182,7 @@ input[type="radio"] {
   bottom: 0;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .popup {
@@ -212,6 +202,10 @@ input[type="radio"] {
   margin-top: 10px;
 }
 
+#play-button:hover {
+  background-color: #1a7a5a;
+}
+
 .home-button {
   position: fixed;
   top: 20px;
@@ -222,7 +216,12 @@ input[type="radio"] {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  display: none; /* Initially hidden */
+  display: none;
+  z-index: 50;
+}
+
+.home-button:hover {
+  background-color: #1a7a5a;
 }
 
 #timer,
@@ -239,40 +238,54 @@ input[type="radio"] {
   margin-bottom: 20px;
 }
 
-#keyboard-container {
-  margin-top: 20px;
+/* On-screen keyboard styles */
+.keyboard-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 .key {
-  background-color: #86a8cf;
-  border: 1px solid #186049;
-  color: #242f49;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 30px;
-  text-align: center;
-}
-
-.key:hover {
+  width: 38px;
+  height: 38px;
   background-color: #186049;
   color: #ffa586;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-@media (min-width: 769px) {
-  #keyboard-container {
-    display: none;
-  }
+.key:hover:not(:disabled) {
+  background-color: #1a7a5a;
+  transform: scale(1.05);
+}
+
+.key:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.key.correct {
+  background-color: #2e7d32;
+}
+
+.key.wrong {
+  background-color: #b51a2b;
 }
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
     height: auto;
+    padding: 10px;
   }
 
   .container {
@@ -306,7 +319,15 @@ input[type="radio"] {
     padding: 5px 10px;
   }
 
-  #keyboard-container {
-    display: flex;
+  .keyboard-container {
+    max-width: 100%;
+    gap: 3px;
+  }
+
+  .key {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
   }
 }
+
